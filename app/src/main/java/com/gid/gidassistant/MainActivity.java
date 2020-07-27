@@ -14,8 +14,4 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
-
-    public void setContentView(View view) {
-        FirebaseAnalytics.getInstance(this).resetAnalyticsData();
-    }
 }
