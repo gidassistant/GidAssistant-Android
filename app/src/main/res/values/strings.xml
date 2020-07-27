@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">GidAssistant-Android</string>
+
+    <string name="gid_assista">Gid Assistant </string>
+
+
 </resources>
