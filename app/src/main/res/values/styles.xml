@@ -18,4 +18,9 @@
 
     </style>
 
+    <style name="Widget.BottomNavigationView14" parent="@style/Widget.Design.BottomNavigationView">
+        <item name="fontFamily">@font/mon_ligth
+        </item>
+    </style>
+
 </resources>
