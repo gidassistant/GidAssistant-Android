@@ -8,8 +8,10 @@
     android:orientation="vertical"
     >
 
+
     <include layout="@layout/appbar"
         android:id="@+id/app_bar"/>
+
 
 
 
