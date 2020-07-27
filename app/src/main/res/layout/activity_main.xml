@@ -14,4 +14,47 @@
         android:id="@+id/app_bar"/>
 
 
+    <TextView
+        android:id="@+id/gid_assista1"
+        android:layout_width="117dp"
+        android:layout_height="21dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="46dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="11dp"
+        android:text="@string/gid_assista"
+        android:textAppearance="@style/gid_assista"
+        android:gravity="center_horizontal|top"
+        android:fontFamily="@font/mon_ligth"
+        />
+
+    <TextView
+        android:id="@+id/gid_assista2"
+        android:layout_width="117dp"
+        android:layout_height="21dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="46dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="11dp"
+        android:text="@string/gid_assista"
+        android:textAppearance="@style/gid_assista"
+        android:gravity="center_horizontal|top"
+        android:fontFamily="@font/mon_ligth"
+        />
+
+    <TextView
+        android:id="@+id/gid_assista3"
+        android:layout_width="117dp"
+        android:layout_height="21dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="46dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="11dp"
+        android:text="@string/gid_assista"
+        android:textAppearance="@style/gid_assista"
+        android:gravity="center_horizontal|top"
+        android:fontFamily="@font/mon_ligth"
+        />
+
+
 </LinearLayout>
