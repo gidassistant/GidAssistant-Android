@@ -36,4 +36,7 @@ dependencies {
 
     //Google firebase maps
     implementation 'com.google.firebase:firebase-analytics:17.2.2'
+
+    //Google maps services
+    implementation 'com.google.android.gms:play-services-maps:17.0.0'
 }
