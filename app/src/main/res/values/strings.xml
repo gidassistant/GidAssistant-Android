@@ -3,5 +3,12 @@
 
     <string name="gid_assista">Gid Assistant </string>
 
+    <string name="title_activity_maps">Map</string>
 
+    <string name="menu_route">Route</string>>
+    <string name="menu_best">Best</string>>
+    <string name="menu_profile">Profile</string>
+    
+    <string name="build_route">Build route</string>
+    <string name="interest_route">Interests</string>
 </resources>
