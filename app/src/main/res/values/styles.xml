@@ -34,6 +34,21 @@
             </item>
     </style>
 
+    <style name="SmallText">
+        <item name="android:textSize">
+            9sp
+        </item>
+        <item name="android:textStyle">
+            normal
+        </item>
+        <item name="fontFamily">
+            @font/mon_regular
+        </item>
+        <item name="textAllCaps">
+            false
+        </item>
+    </style>
+
     <style name="Widget.BottomNavigationView14" parent="@style/Widget.Design.BottomNavigationView">
         <item name="fontFamily">@font/mon_ligth
         </item>
