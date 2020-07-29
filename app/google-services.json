@@ -34,35 +34,6 @@
           ]
         }
       }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:1091549332046:android:ed3a569d1d642c613f791f",
-        "android_client_info": {
-          "package_name": "com.yuda.gidassistant_android"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "1091549332046-e0gutlhb3noni0e08aqmfh4gtku4eh32.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyD-0A7zGIE7S2YOraaNU_Ms4XSflI_lXHs"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "1091549332046-e0gutlhb3noni0e08aqmfh4gtku4eh32.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        }
-      }
     }
   ],
   "configuration_version": "1"
