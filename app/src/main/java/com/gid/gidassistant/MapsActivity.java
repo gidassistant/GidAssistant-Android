@@ -5,6 +5,7 @@ import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -20,9 +21,11 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
-    private static final int MY_PERMISSIONS_REQUEST_READ_CONTACTS = 23;
+    private static final int MY_PERMISSIONS_REQUEST_READ_CONTACTS = 100;
     private GoogleMap mMap;
     Button btn;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,14 +37,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
 
     private void checkPermission() {
-        if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION)
+        if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED) {
 
-            ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.ACCESS_COARSE_LOCATION},
+            ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION},
                     MY_PERMISSIONS_REQUEST_READ_CONTACTS);
         } else {
-            SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
-            mapFragment.getMapAsync(this);
+            showMap();
         }
     }
 
@@ -51,14 +53,32 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             case MY_PERMISSIONS_REQUEST_READ_CONTACTS: {
                 if (grantResults.length > 0
                         && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
-                    mapFragment.getMapAsync(this);
+                    showMap();
                 } else {
                     // permission denied, boo! Disable the
                     // functionality that depends on this permission.
                 }
-                return;
             }
+        }
+    }
+    public void showToastMessage(final String msg) {
+
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                Toast.makeText(MapsActivity.this, msg, Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
+    private void showMap() {
+
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
+        if (mapFragment != null) {
+            mapFragment.getMapAsync(this);
+            showToastMessage("showMap");
+        } else {
+            showToastMessage("showMap");
         }
     }
 
@@ -74,6 +94,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
      */
     @Override
     public void onMapReady(GoogleMap googleMap) {
+        Toast.makeText(this, "onMapReady", Toast.LENGTH_LONG).show();
         mMap = googleMap;
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
@@ -85,11 +106,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             // for ActivityCompat#requestPermissions for more details.
             return;
         }
-        mMap.setMyLocationEnabled(true);
+        googleMap.setMyLocationEnabled(true);
 
-        mMap.setOnMyLocationChangeListener(new GoogleMap.OnMyLocationChangeListener() {
+        googleMap.setOnMyLocationChangeListener(new GoogleMap.OnMyLocationChangeListener() {
             @Override
             public void onMyLocationChange(Location location) {
+                Toast.makeText(getApplicationContext(), "onMyLocationChange", Toast.LENGTH_LONG).show();
                 LatLng latlng=new LatLng(location.getLatitude(),location.getLongitude());
                 MarkerOptions markerOptions = new MarkerOptions();
                 markerOptions.position(latlng);
