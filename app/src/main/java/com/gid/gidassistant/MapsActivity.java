@@ -1,15 +1,15 @@
 package com.gid.gidassistant;
 
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.FragmentActivity;
+
 import android.Manifest;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.Toast;
-
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-import androidx.fragment.app.FragmentActivity;
 
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -18,6 +18,7 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
@@ -91,7 +92,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
      * If Google Play services is not installed on the device, the user will be prompted to install
      * it inside the SupportMapFragment. This method will only be triggered once the user has
      * installed Google Play services and returned to the app.
-     */
+    */
     @Override
     public void onMapReady(GoogleMap googleMap) {
         Toast.makeText(this, "onMapReady", Toast.LENGTH_LONG).show();
@@ -113,12 +114,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             public void onMyLocationChange(Location location) {
                 Toast.makeText(getApplicationContext(), "onMyLocationChange", Toast.LENGTH_LONG).show();
                 LatLng latlng=new LatLng(location.getLatitude(),location.getLongitude());
+
                 MarkerOptions markerOptions = new MarkerOptions();
                 markerOptions.position(latlng);
 
                 markerOptions.title("My Marker");
                 mMap.clear();
-                CameraUpdate cameraUpdate= CameraUpdateFactory.newLatLngZoom(
+                CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(
                         latlng, 15);
                 mMap.animateCamera(cameraUpdate);
                 mMap.addMarker(markerOptions);
@@ -126,12 +128,32 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             }
         });
 
+    }
 
-      /*  mMap = googleMap;
+
+
+      /*  private GoogleMap mMap;
+
+         @Override
+         protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.map);
+        mapFragment.getMapAsync(this);
+         }
+
+
+         @Override
+    public void onMapReady(GoogleMap googleMap) {
+        mMap = googleMap;
+
         // Add a marker in Sydney and move the camera
         LatLng sydney = new LatLng(-34, 151);
         mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));*/
 
-    }
+//    }
+
 }
