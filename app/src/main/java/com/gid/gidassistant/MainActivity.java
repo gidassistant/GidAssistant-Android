@@ -26,10 +26,12 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     static final int MY_PERMISSIONS_REQUEST_READ_CONTACTS=23;
     private GoogleMap mMap;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main); 
         checkPermission();
     }
 
@@ -85,6 +87,5 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
             }
         });
-
     }
 }
