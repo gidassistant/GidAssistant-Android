@@ -33,7 +33,7 @@
         android:background="@drawable/active_outline_btn"
         android:text="@string/interest_route"
         android:textColor="@color/activeColor"
-
+        style="@style/DefaultText"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
