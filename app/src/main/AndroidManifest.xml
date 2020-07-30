@@ -27,6 +27,7 @@
             </intent-filter>
         </activity>
 
+
         <activity android:name=".MapsActivity">
             <intent-filter>
                 <action android:name="android.intent.action.DEFAULT" />
