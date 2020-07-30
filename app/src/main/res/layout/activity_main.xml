@@ -8,9 +8,6 @@
     android:orientation="vertical"
     >
 
-
-
-
     <include layout="@layout/app_bar"
         android:id="@+id/app_bar"/>
 
@@ -36,7 +33,6 @@
         android:background="@drawable/active_outline_btn"
         android:text="@string/interest_route"
         android:textColor="@color/activeColor"
-        android:theme="@style/DefaultText"
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
