@@ -6,56 +6,30 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-
-
     </style>
 
     <style name="gid_assista">
-        <item name="android:textSize">
-            18sp
-        </item>
-
-        <item name="android:textColor">
-            #2E2E2E
-        </item>
+        <item name="android:textSize"> 18sp </item>
+        <item name="android:textColor"> #2E2E2E</item>
     </style>
     
     
     <style name="DefaultText">
-            <item name="android:textSize">
-                18sp
-            </item>
-            <item name="android:textStyle">
-                normal
-            </item>
-            <item name="fontFamily">
-                @font/mon_regular
-            </item>
-            <item name="textAllCaps">
-                false
-            </item>
+        <item name="android:textSize"> 18sp </item>
+        <item name="android:textStyle"> normal </item>
+        <item name="fontFamily"> @font/mon_regular </item>
+        <item name="textAllCaps"> false </item>
     </style>
 
     <style name="SmallText">
-        <item name="android:textSize">
-            9sp
-        </item>
-        <item name="android:textStyle">
-            normal
-        </item>
-        <item name="fontFamily">
-            @font/mon_regular
-        </item>
-        <item name="textAllCaps">
-            false
-        </item>
+        <item name="android:textSize"> 9sp </item>
+        <item name="android:textStyle"> normal </item>
+        <item name="fontFamily"> @font/mon_regular </item>
+        <item name="textAllCaps"> false </item>
     </style>
 
     <style name="Widget.BottomNavigationView14" parent="@style/Widget.Design.BottomNavigationView">
-        <item name="fontFamily">@font/mon_ligth
-        </item>
+        <item name="fontFamily">@font/mon_light</item>
     </style>
-    
-    
 
 </resources>
