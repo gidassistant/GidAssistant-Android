@@ -96,8 +96,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
         mMap = googleMap;
         if (ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
             ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
+            // TODO: Consider calling ActivityCompat#requestPermissions
             // here to request the missing permissions, and then overriding
             //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
             //                                          int[] grantResults)
@@ -116,8 +115,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
                 markerOptions.title("My Marker");
                 mMap.clear();
-                CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(
-                        latlng, 15);
+                CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(latlng, 15);
                 mMap.animateCamera(cameraUpdate);
                 mMap.addMarker(markerOptions);
             }
