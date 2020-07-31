@@ -1,16 +1,16 @@
 package com.gid.gidassistant;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+
+import android.app.FragmentTransaction;
+import android.os.Bundle;
+import android.app.Fragment;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
 import android.location.Location;
-import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 
 import com.google.android.gms.maps.CameraUpdate;
@@ -20,7 +20,6 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.firebase.analytics.FirebaseAnalytics;
 
 public class MainActivity extends AppCompatActivity implements OnMapReadyCallback{
 
@@ -33,6 +32,13 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         checkPermission();
+
+        //View inflatePer = getSupportFragmentManager().findFragmentById(R.id.map_fragment).getLayoutInflater().inflate(R.id.map, this, false);
+
+        Fragment interestsTab = new InterestsTab();
+        FragmentTransaction ft = getFragmentManager().beginTransaction();
+        ft.add(R.id.interests_tab_frag, interestsTab);
+        ft.commit();
     }
 
 
