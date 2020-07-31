@@ -2,6 +2,7 @@ package com.gid.gidassistant;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.View;
 
@@ -10,6 +11,7 @@ import com.google.firebase.analytics.FirebaseAnalytics;
 
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import android.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -46,6 +48,13 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         checkPermission();
+
+        //View inflatePer = getSupportFragmentManager().findFragmentById(R.id.map_fragment).getLayoutInflater().inflate(R.id.map, this, false);
+
+        Fragment interestsTab = new InterestsTab();
+        FragmentTransaction ft = getFragmentManager().beginTransaction();
+        ft.add(R.id.interests_tab_frag, interestsTab);
+        ft.commit();
     }
 
 
