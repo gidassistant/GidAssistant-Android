@@ -13,7 +13,6 @@
         layout="@layout/app_bar" />
 
 
-
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/down_panel"
         android:layout_width="match_parent"
@@ -33,47 +32,26 @@
 
         />
 
+    
 
-
-
-
-
-<!--   <fragment
-        android:id="@+id/map"
-        android:name="com.google.android.gms.maps.SupportMapFragment"
+    <FrameLayout
+        android:id="@+id/map_fragment"
         android:layout_width="match_parent"
-
         android:layout_height="0dp"
-
-
+        android:layout_weight="1"
         app:layout_constraintBottom_toTopOf="@+id/down_panel"
         app:layout_constraintTop_toBottomOf="@+id/app_bar"
+        tools:layout="@layout/maps_tab"/>
 
-        tools:context=".MainActivity" />-->
+    <!--<fragment
+        android:id="@+id/interests_tab_frag"
+        android:name="com.gid.gidassistant.InterestsTab"
+        android:layout_width="match_parent"
+        android:layout_height="550dp"
+        android:layout_weight="1"
+        app:layout_constraintBottom_toTopOf="@+id/down_panel"
+        tools:layout="@layout/insterests_tab"/>-->
 
-
-
-
-     <FrameLayout
-         android:id="@+id/map_fragment"
-         android:layout_width="match_parent"
-         android:layout_height="0dp"
-
-         android:layout_weight="1"
-
-         app:layout_constraintBottom_toTopOf="@+id/down_panel"
-         app:layout_constraintTop_toBottomOf="@+id/app_bar"
-         tools:layout="@layout/maps_tab" />
-
-    <fragment
-         android:id="@+id/interests_tab_frag"
-         android:layout_width="match_parent"
-         android:layout_height="550dp"
-         android:name="com.gid.gidassistant.InterestsTab"
-
-         app:layout_constraintBottom_toTopOf="@+id/down_panel"
-         android:layout_weight="1"
-         tools:layout="@layout/insterests_tab"/>
 
 
  </androidx.constraintlayout.widget.ConstraintLayout>
