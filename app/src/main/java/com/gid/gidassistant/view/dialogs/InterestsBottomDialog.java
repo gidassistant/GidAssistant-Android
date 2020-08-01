@@ -1,4 +1,4 @@
-package com.gid.gidassistant.dialogs;
+package com.gid.gidassistant.view.dialogs;
 
 import android.content.Context;
 import android.os.Bundle;
