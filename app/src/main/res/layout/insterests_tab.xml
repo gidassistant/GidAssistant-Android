@@ -1,25 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:id="@+id/interests_sheet"
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/interest_bottom_sheet"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/interests_menu"
-    app:layout_behavior="android.support.design.widget.BottomSheetBehavior">
+    android:layout_height="480dp"
+    android:orientation="vertical"
+    app:behavior_hideable="false"
+    app:behavior_peekHeight="0dp"
+    app:layout_behavior="@string/bottom_sheet_behavior"
+    android:padding="20dp"
+    android:background="@drawable/interests_menu">
+
+  <!--  <View
+        android:layout_width="150dp"
+        android:layout_height="2dp"
+        android:layout_marginBottom="5sp"
+        android:background="@color/primaryDark"
+        android:layout_gravity="center_horizontal"
+        />-->
 
     <TextView
-        android:theme="@style/DefaultText"
-        android:textColor="@color/blackColor"
+        style="@style/DefaultText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/interest_route"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="15dp"
         android:gravity="center"
-        android:textSize="22dp"
-        ></TextView>
+        android:textColor="@color/blackColor"
+        android:textSize="22dp"/>
 
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

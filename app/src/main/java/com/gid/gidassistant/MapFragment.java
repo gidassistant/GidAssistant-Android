@@ -1,7 +1,6 @@
 package com.gid.gidassistant;
 
 import android.Manifest;
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.pm.PackageManager;
@@ -11,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -18,6 +18,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
+import com.gid.gidassistant.dialogs.InterestsBottomDialog;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -25,6 +26,7 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
 
 public class MapFragment extends Fragment implements OnMapReadyCallback {
 
@@ -34,6 +36,8 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
     private GoogleMap mMap;
     private Activity activity;
     private static final String TAG = "MapFragment";
+    private View interestsButton;
+    private LinearLayout linearLayout;
 
     public MapFragment() {
 
@@ -55,6 +59,16 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         checkPermission();
+        interestsButton = this.view.findViewById(R.id.interestsButton);
+        linearLayout = this.view.findViewById(R.id.interest_bottom_sheet);
+        Log.d(TAG, "onViewCreated: " + linearLayout);
+        final BottomSheetBehavior bottomSheetBehavior = BottomSheetBehavior.from(linearLayout);
+        interestsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
+            }
+        });
     }
 
     private void checkPermission(){
