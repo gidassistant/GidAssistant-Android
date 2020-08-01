@@ -4,12 +4,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_navigation"
     tools:ignore="UnusedNavigation"
-    app:startDestination="@+id/navigation_home">
-
+    app:startDestination="@+id/navigation_map">
 
     <fragment
-        android:id="@+id/navigation_home"
+        android:id="@+id/navigation_map"
+        android:name="com.gid.gidassistant.view.fragments.MapFragment"
         android:label="@string/menu_route"
-         />
+        tools:layout="@layout/maps_tab"/>
+
+    <fragment
+        android:id="@+id/navigation_best"
+        android:name="com.gid.gidassistant.view.fragments.BestFragment"
+        android:label="@string/menu_route"
+        tools:layout="@layout/best_layout"/>
+
+    <fragment
+        android:id="@+id/navigation_profile"
+        android:name="com.gid.gidassistant.view.fragments.ProfileFragment"
+        android:label="@string/menu_route"
+        tools:layout="@layout/profile_layout"/>
 
 </navigation>
