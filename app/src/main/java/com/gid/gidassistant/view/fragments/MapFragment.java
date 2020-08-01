@@ -1,4 +1,4 @@
-package com.gid.gidassistant;
+package com.gid.gidassistant.view.fragments;
 
 import android.Manifest;
 import android.app.Activity;
@@ -18,7 +18,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
-import com.gid.gidassistant.dialogs.InterestsBottomDialog;
+import com.gid.gidassistant.R;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
