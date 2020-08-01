@@ -7,5 +7,6 @@
     <color name="toolbarBackground">#ffffff</color>
     <color name="whiteColor">#FFFFFF</color>
     <color name="blackColor">#2E2E2E</color>
+    <color name="primaryDark">#252E2E2E</color>
     <color name="activeColor">#4385F5</color>
 </resources>
