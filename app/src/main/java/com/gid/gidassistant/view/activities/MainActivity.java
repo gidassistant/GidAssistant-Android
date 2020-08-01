@@ -1,7 +1,7 @@
 package com.gid.gidassistant.view.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
+
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -9,7 +9,7 @@ import androidx.navigation.ui.NavigationUI;
 
 import android.os.Bundle;
 
-import com.gid.gidassistant.view.fragments.MapFragment;
+
 import com.gid.gidassistant.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
