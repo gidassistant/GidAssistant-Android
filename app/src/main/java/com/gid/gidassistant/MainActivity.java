@@ -24,6 +24,9 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 public class MainActivity extends AppCompatActivity {
 
+
+
+
     private static final int MY_PERMISSIONS_REQUEST_READ_CONTACTS = 23;
     private GoogleMap mMap;
     Button btn;

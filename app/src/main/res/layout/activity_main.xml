@@ -5,12 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    >
 
 
     <include
         android:id="@+id/app_bar"
         layout="@layout/app_bar" />
+
+
 
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -43,14 +46,14 @@
         app:layout_constraintTop_toBottomOf="@+id/app_bar"
         tools:layout="@layout/maps_tab"/>
 
-    <!--<fragment
+    <fragment
         android:id="@+id/interests_tab_frag"
         android:name="com.gid.gidassistant.InterestsTab"
         android:layout_width="match_parent"
         android:layout_height="550dp"
         android:layout_weight="1"
         app:layout_constraintBottom_toTopOf="@+id/down_panel"
-        tools:layout="@layout/insterests_tab"/>-->
+        tools:layout="@layout/insterests_tab"/>
 
 
 

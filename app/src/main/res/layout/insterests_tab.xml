@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/interests_sheet"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/interests_menu">
+    android:background="@drawable/interests_menu"
+    app:layout_behavior="android.support.design.widget.BottomSheetBehavior">
 
     <TextView
-        style="@style/DefaultText"
+        android:theme="@style/DefaultText"
+        android:textColor="@color/blackColor"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/interest_route"
