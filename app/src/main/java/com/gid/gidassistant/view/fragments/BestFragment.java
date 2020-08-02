@@ -12,7 +12,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.gid.gidassistant.R;
-import com.gid.gidassistant.view.activities.BestItemAdapter;
+import com.gid.gidassistant.view.adapters.best.BestItemAdapter;
+import com.gid.gidassistant.view.adapters.best.SpacesItemDecoration;
 
 public class BestFragment extends Fragment {
 
@@ -41,10 +42,11 @@ public class BestFragment extends Fragment {
 
         recyclerView.setAdapter(bestItemAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-
+        recyclerView.addItemDecoration(new SpacesItemDecoration(100));
 
         return view;
     }
+
 
 
 
