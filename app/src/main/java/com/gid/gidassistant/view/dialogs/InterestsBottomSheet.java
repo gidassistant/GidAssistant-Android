@@ -12,12 +12,12 @@ import androidx.annotation.Nullable;
 import com.gid.gidassistant.R;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
-public class InterestsBottomDialog extends BottomSheetDialogFragment {
+public class InterestsBottomSheet extends BottomSheetDialogFragment {
 
     private Context context;
     private View thisView;
 
-    public InterestsBottomDialog(Context context) {
+    public InterestsBottomSheet(Context context) {
         this.context = context;
     }
 

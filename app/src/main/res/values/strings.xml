@@ -11,4 +11,5 @@
     
     <string name="build_route">Build route</string>
     <string name="interest_route">Interests</string>
+    <string name="internal_server_error">На сервере произошла ошибка!</string>
 </resources>

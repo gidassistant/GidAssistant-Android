@@ -22,6 +22,7 @@ import com.gid.gidassistant.R;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.GoogleMapOptions;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
@@ -39,13 +40,10 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
     private View interestsButton;
     private LinearLayout linearLayout;
 
+    private boolean isLocationEnable = false;
+
     public MapFragment() {
 
-    }
-
-    public MapFragment(Context context, Activity activity) {
-        this.context = context;
-        this.activity = activity;
     }
 
     @Nullable
@@ -71,14 +69,19 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
         });
     }
 
-    private void checkPermission(){
+    private boolean isLocationEnable() {
+        return ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission_group.LOCATION) == PackageManager.PERMISSION_GRANTED;
+    }
+
+    private void checkPermission() {
         if ( ContextCompat.checkSelfPermission(getActivity(), android.Manifest.permission.ACCESS_COARSE_LOCATION )
                 != PackageManager.PERMISSION_GRANTED ) {
 
-            ActivityCompat.requestPermissions( activity, new String[] {  android.Manifest.permission.ACCESS_COARSE_LOCATION  },
+            ActivityCompat.requestPermissions( getActivity(), new String[] {  android.Manifest.permission.ACCESS_COARSE_LOCATION  },
                     MY_PERMISSIONS_REQUEST_READ_CONTACTS );
         }
         else{
+            isLocationEnable = true;
             SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
             mapFragment.getMapAsync(this);
             Log.d(TAG, "onRequestPermissionsResult: " + mapFragment);
@@ -94,11 +97,11 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
                     SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
                     Log.d(TAG, "onRequestPermissionsResult: " + mapFragment);
                     mapFragment.getMapAsync(this);
+                    isLocationEnable = true;
                 } else {
                     // permission denied, boo! Disable the
                     // functionality that depends on this permission.
                 }
-                return;
             }
         }
     }
@@ -117,22 +120,24 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
             // for ActivityCompat#requestPermissions for more details.
             return;
         }
-        mMap.setMyLocationEnabled(true);
+        if(isLocationEnable) {
+            mMap.setMyLocationEnabled(true);
 
-        mMap.setOnMyLocationChangeListener(new GoogleMap.OnMyLocationChangeListener() {
-            @Override
-            public void onMyLocationChange(Location location) {
-                LatLng latlng = new LatLng(location.getLatitude(), location.getLongitude());
-                MarkerOptions markerOptions = new MarkerOptions();
-                markerOptions.position(latlng);
+            mMap.setOnMyLocationChangeListener(new GoogleMap.OnMyLocationChangeListener() {
+                @Override
+                public void onMyLocationChange(Location location) {
+                    LatLng latlng = new LatLng(location.getLatitude(), location.getLongitude());
+                    MarkerOptions markerOptions = new MarkerOptions();
+                    markerOptions.position(latlng);
 
-                markerOptions.title("My Marker");
-                mMap.clear();
-                CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(latlng, 15);
-                mMap.animateCamera(cameraUpdate);
-                mMap.addMarker(markerOptions);
-            }
-        });
+                    markerOptions.title("My Marker");
+                    mMap.clear();
+                    CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(latlng, 15);
+                    mMap.animateCamera(cameraUpdate);
+                    mMap.addMarker(markerOptions);
+                }
+            });
+        }
 
     }
 
