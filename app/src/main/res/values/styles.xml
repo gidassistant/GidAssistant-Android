@@ -21,6 +21,28 @@
         <item name="textAllCaps"> false </item>
     </style>
 
+
+    <style name="HeadingFatText">
+        <item name="android:textSize"> 18sp </item>
+        <item name="android:textStyle"> normal </item>
+        <item name="fontFamily"> @font/mon_semibold </item>
+        <item name="textAllCaps"> false </item>
+    </style>
+
+    <style name="HeadingText">
+        <item name="android:textSize"> 18sp </item>
+        <item name="android:textStyle"> normal </item>
+        <item name="fontFamily"> @font/mon_regular </item>
+        <item name="textAllCaps"> false </item>
+    </style>
+
+    <style name="DescriptionText">
+        <item name="android:textSize"> 14sp </item>
+        <item name="android:textStyle"> normal </item>
+        <item name="fontFamily"> @font/mon_regular </item>
+        <item name="textAllCaps"> false </item>
+    </style>
+
     <style name="SmallText">
         <item name="android:textSize"> 9sp </item>
         <item name="android:textStyle"> normal </item>
