@@ -1,4 +1,4 @@
-package com.gid.gidassistant.view.activities;
+package com.gid.gidassistant.view.adapters.best;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -6,6 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import android.graphics.Rect;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -67,6 +69,24 @@ public class BestItemAdapter extends RecyclerView.Adapter<BestItemAdapter.BestVi
 
         }
     }
+
+    public class SpacesItemDecoration extends RecyclerView.ItemDecoration
+    {
+        private int space;
+
+        public SpacesItemDecoration(int space)
+        {
+            this.space = space;
+        }
+
+        @Override
+        public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state)
+        {
+            //добавить переданное кол-во пикселей отступа снизу
+            outRect.bottom = space;
+        }
+    }
+
 
 //    class BestItemViewHolder extends RecyclerView.ViewHolder {
 //

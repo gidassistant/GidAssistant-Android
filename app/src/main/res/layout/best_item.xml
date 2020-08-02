@@ -8,7 +8,7 @@
     android:orientation="horizontal"
     android:padding="16dp"
     android:background="@color/whiteColor"
-    tools:context=".view.activities.BestItemAdapter">
+    tools:context=".view.adapters.best.BestItemAdapter">
 
     <LinearLayout
         android:id="@+id/image_content"
