@@ -1,7 +1,10 @@
 package com.gid.gidassistant.model.repository.interests;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AlertDialog;
 
 import com.gid.gidassistant.R;
 import com.gid.gidassistant.model.entities.Interest;
@@ -63,8 +66,13 @@ public class InterestsHttpProvider implements InterestsProvider {
 
             @Override
             public void onFailure(Call<List<Interest>> call, Throwable t) {
-                //android.app.Dialog dialog = new Dialog.Builder(context).getServerNotRespondedDialog();
-                Toast.makeText(context, "Server doesn't respond!", Toast.LENGTH_SHORT).show();
+                AlertDialog dialog = new AlertDialog.Builder(context)
+                        .setTitle("Oops...")
+                        .setMessage("There is no respond from server!")
+                        .setNeutralButton("Ok", (dialog1, which) -> {
+                            dialog1.dismiss();
+                        })
+                        .show();
             }
         });
         return interests;

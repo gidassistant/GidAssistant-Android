@@ -5,22 +5,21 @@
     android:orientation="vertical"
     android:gravity="center"
     android:background="@color/toolbarBackground">
-
+<!--
     <TextView
         android:gravity="center_horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/gid_assista"
-        android:text="Чтобы просматривать маршрут, нам необходимо знать ваше расположение"/>
+        android:text="Чтобы просматривать маршрут, нам необходимо знать ваше расположение"/>-->
 
     <ImageView
-        android:layout_marginTop="35sp"
         android:layout_gravity="center_horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_location_earth"/>
-    
-    <Button
+
+  <!--  <Button
         android:layout_marginTop="30sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -28,6 +27,6 @@
         android:text="Give permissions"
         android:theme="@style/gid_assista"
         android:paddingStart="25sp"
-        android:paddingEnd="25sp"/>
+        android:paddingEnd="25sp"/>-->
 
 </LinearLayout>

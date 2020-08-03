@@ -22,6 +22,11 @@ android {
         }
     }
 
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
 }
 
 dependencies {
@@ -65,8 +70,8 @@ dependencies {
     api 'com.google.dagger:dagger:2.15'
     annotationProcessor 'com.google.dagger:dagger-compiler:2.15'
 
-    def perm_dispetch = "4.7.0"
     //
+    def perm_dispetch = "4.7.0"
     implementation "org.permissionsdispatcher:permissionsdispatcher:$perm_dispetch"
     annotationProcessor "org.permissionsdispatcher:permissionsdispatcher-processor:$perm_dispetch"
 

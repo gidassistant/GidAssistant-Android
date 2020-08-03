@@ -19,6 +19,7 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import com.gid.gidassistant.R;
+import com.gid.gidassistant.utils.Permissions;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -29,9 +30,8 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 
-public class MapFragment extends Fragment implements OnMapReadyCallback {
+public class MapFragment extends Fragment implements OnMapReadyCallback, Permissions.PermissionsObserver {
 
-    private static final int MY_PERMISSIONS_REQUEST_READ_CONTACTS = 100;
     private Context context;
     private View view;
     private GoogleMap mMap;
@@ -56,7 +56,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        checkPermission();
+        //checkPermission();
         interestsButton = this.view.findViewById(R.id.interestsButton);
         linearLayout = this.view.findViewById(R.id.interest_bottom_sheet);
         Log.d(TAG, "onViewCreated: " + linearLayout);
@@ -67,44 +67,10 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
                 bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
             }
         });
+        checkPermission();
     }
 
-    private boolean isLocationEnable() {
-        return ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission_group.LOCATION) == PackageManager.PERMISSION_GRANTED;
-    }
 
-    private void checkPermission() {
-        if ( ContextCompat.checkSelfPermission(getActivity(), android.Manifest.permission.ACCESS_COARSE_LOCATION )
-                != PackageManager.PERMISSION_GRANTED ) {
-
-            ActivityCompat.requestPermissions( getActivity(), new String[] {  android.Manifest.permission.ACCESS_COARSE_LOCATION  },
-                    MY_PERMISSIONS_REQUEST_READ_CONTACTS );
-        }
-        else{
-            isLocationEnable = true;
-            SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
-            mapFragment.getMapAsync(this);
-            Log.d(TAG, "onRequestPermissionsResult: " + mapFragment);
-        }
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
-        switch (requestCode) {
-            case MY_PERMISSIONS_REQUEST_READ_CONTACTS: {
-                if (grantResults.length > 0
-                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
-                    Log.d(TAG, "onRequestPermissionsResult: " + mapFragment);
-                    mapFragment.getMapAsync(this);
-                    isLocationEnable = true;
-                } else {
-                    // permission denied, boo! Disable the
-                    // functionality that depends on this permission.
-                }
-            }
-        }
-    }
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
@@ -141,4 +107,21 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
     }
 
+    private void checkPermission() {
+        Permissions.Provider provider = new Permissions.Provider(this);
+        provider.requestForegroundLocationPermission(getActivity());
+    }
+
+    @Override
+    public void onRequestPermissionGranted() {
+        SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
+        Log.d(TAG, "onRequestPermissionsResult: " + mapFragment);
+        mapFragment.getMapAsync(this);
+        isLocationEnable = true;
+    }
+
+    @Override
+    public void onRequestPermissionDenied() {
+        isLocationEnable = false;
+    }
 }
