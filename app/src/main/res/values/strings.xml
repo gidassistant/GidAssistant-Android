@@ -8,7 +8,19 @@
     <string name="menu_route">Route</string>>
     <string name="menu_best">Best</string>>
     <string name="menu_profile">Profile</string>
-    
+
     <string name="build_route">Build route</string>
     <string name="interest_route">Interests</string>
+
+    <!-- strings.xml -->
+    <string name="lorem_ipsum">
+
+        \tLorem ipsum dolor sit amet, consectetur
+        adipiscing elit, sed do eiusmod tempor
+        incididunt ut labore et dolore magna aliqua.
+        Ut enim ad minim veniam, quis nostrud exercitation
+        ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        Duis aute irure dolor in reprehenderit in voluptate velit esse
+        cillum more information
+</string>
 </resources>

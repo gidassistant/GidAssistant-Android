@@ -18,6 +18,7 @@ import com.gid.gidassistant.view.adapters.best.SpacesItemDecoration;
 public class BestFragment extends Fragment {
 
 
+
     String mTitle[] = {"Facebook", "Whatsapp", "Twitter", "Instagram", "Youtube"};
     String mHeading[] = {"Facebook", "Whatsapp", "Twitter", "Instagram", "Youtube"};
     String mDescription[] = {"Facebook Description", "Whatsapp Description", "Twitter Description", "Instagram Description", "Youtube Description"};
@@ -25,9 +26,10 @@ public class BestFragment extends Fragment {
 
     private View view;
     private RecyclerView listItem;
-   // private ProgressBar progressBar;
+    // private ProgressBar progressBar;
 
-    public BestFragment() { }
+    public BestFragment() {
+    }
 
 
     @Nullable
@@ -46,8 +48,6 @@ public class BestFragment extends Fragment {
 
         return view;
     }
-
-
 
 
 }
