@@ -10,8 +10,9 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.gid.gidassistant.R;
+import com.gid.gidassistant.presenter.contracts.BestFragmentMainContract;
 
-public class BestFragment extends Fragment {
+public class BestFragment extends Fragment implements BestFragmentMainContract.View {
     private View view;
     @Nullable
     @Override

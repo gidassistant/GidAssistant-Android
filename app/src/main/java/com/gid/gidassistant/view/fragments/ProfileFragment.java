@@ -10,8 +10,9 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.gid.gidassistant.R;
+import com.gid.gidassistant.presenter.contracts.ProfileFragmentMainContract;
 
-public class ProfileFragment extends Fragment {
+public class ProfileFragment extends Fragment implements ProfileFragmentMainContract.View {
 
     private View view;
     @Nullable

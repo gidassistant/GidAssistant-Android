@@ -42,15 +42,15 @@ public class Permissions extends Activity {
             case PERMISSIONS_REQUEST_CODE:
                 if (grantResults.length > 0
                         && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    observer.processFinished(true);
+                    observer.processFinished(true, permissions);
                 } else {
-                    observer.processFinished(false);
+                    observer.processFinished(false, permissions);
                 }
         }
     }
 
     private interface Observer {
-        void processFinished(boolean isSuccess);
+        void processFinished(boolean isSuccess, String[] permissions);
     }
 
     public static class Checker {
@@ -149,17 +149,17 @@ public class Permissions extends Activity {
         }
 
         @Override
-        public void processFinished(boolean isSuccess) {
+        public void processFinished(boolean isSuccess, String[] permissions) {
             if(isSuccess){
-                observer.onRequestPermissionGranted();
+                observer.onRequestPermissionGranted(permissions);
             } else{
-                observer.onRequestPermissionDenied();
+                observer.onRequestPermissionDenied(permissions);
             }
         }
     }
 
     public interface PermissionsObserver {
-        void onRequestPermissionGranted();
-        void onRequestPermissionDenied();
+        void onRequestPermissionGranted(String[] permissions);
+        void onRequestPermissionDenied(String[] permissions);
     }
 }

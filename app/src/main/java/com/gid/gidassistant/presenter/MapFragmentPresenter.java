@@ -1,12 +1,38 @@
 package com.gid.gidassistant.presenter;
 
+import android.app.Activity;
 import android.view.View;
 
-public class MapFragmentPresenter {
+import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
 
-    private View view;
+import com.gid.gidassistant.presenter.contracts.MapFragmentMainContract;
 
-    public MapFragmentPresenter(View view) {
+public class MapFragmentPresenter implements MapFragmentMainContract.Presenter {
+
+    private MapFragmentMainContract.View view;
+
+    public MapFragmentPresenter(MapFragmentMainContract.View view) {
         this.view = view;
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+
+    }
+
+    @Override
+    public void onCreate() {
+
+    }
+
+    @Override
+    public void onDestroy() {
+
+    }
+
+    @Override
+    public void requestPermissions(Activity activity, int requestCode, String[] permissions) {
+
     }
 }

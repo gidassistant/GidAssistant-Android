@@ -15,22 +15,22 @@ import android.widget.LinearLayout;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import com.gid.gidassistant.R;
+import com.gid.gidassistant.presenter.MapFragmentPresenter;
+import com.gid.gidassistant.presenter.contracts.MapFragmentMainContract;
 import com.gid.gidassistant.utils.Permissions;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.GoogleMapOptions;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 
-public class MapFragment extends Fragment implements OnMapReadyCallback, Permissions.PermissionsObserver {
+public class MapFragment extends Fragment implements OnMapReadyCallback, MapFragmentMainContract.View, Permissions.PermissionsObserver {
 
     private Context context;
     private View view;
@@ -42,8 +42,10 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, Permiss
 
     private boolean isLocationEnable = false;
 
-    public MapFragment() {
+    private MapFragmentMainContract.Presenter presenter;
 
+    public MapFragment() {
+        presenter = new MapFragmentPresenter(this);
     }
 
     @Nullable
@@ -113,7 +115,13 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, Permiss
     }
 
     @Override
-    public void onRequestPermissionGranted() {
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        presenter.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    }
+
+    @Override
+    public void onRequestPermissionGranted(String[] permissions) {
         SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
         Log.d(TAG, "onRequestPermissionsResult: " + mapFragment);
         mapFragment.getMapAsync(this);
@@ -121,7 +129,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, Permiss
     }
 
     @Override
-    public void onRequestPermissionDenied() {
-        isLocationEnable = false;
+    public void onRequestPermissionDenied(String[] permissions) {
+
     }
 }

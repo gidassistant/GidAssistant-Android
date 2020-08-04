@@ -25,12 +25,12 @@ public class SplashActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.permissions_layout);
-        while(!isServerAnswered) {
+        /*while(!isServerAnswered) {
             serverDispatch();
-        }
+        }*/
     }
 
-    private void serverDispatch() {
+/*    private void serverDispatch() {
         InterestsAPIManager interestsAPIManager = RetrofitBuilder.interestsAPIManager();
         Call<List<Interest>> list = interestsAPIManager.getAll();
 
@@ -49,5 +49,5 @@ public class SplashActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(),"There is no respond from server!", Toast.LENGTH_SHORT).show();
             }
         });
-    }
+    }*/
 }
