@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">GidAssistant-Android</string>
+    <string name="app_name">GidAssistant</string>
 
     <string name="gid_assista">Gid Assistant </string>
 
@@ -15,7 +15,6 @@
 
     <!-- strings.xml -->
     <string name="lorem_ipsum">
-
         \tLorem ipsum dolor sit amet, consectetur
         adipiscing elit, sed do eiusmod tempor
         incididunt ut labore et dolore magna aliqua.
@@ -24,4 +23,5 @@
         Duis aute irure dolor in reprehenderit in voluptate velit esse
         cillum more information
     </string>
+
 </resources>
