@@ -15,18 +15,11 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-//        Fragment mapTab = new MapFragment(this, this);
-//        getSupportFragmentManager()
-//                .beginTransaction()
-//                .add(R.id.map_fragment, mapTab)
-//                .commit();
-
+        //providePermissions();
         BottomNavigationView navView = findViewById(R.id.down_panel);
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
@@ -37,10 +30,11 @@ public class MainActivity extends AppCompatActivity {
         //NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
 
+//        Fragment mapTab = new MapFragment(this, this);
+//        getSupportFragmentManager()
+//                .beginTransaction()
+//                .add(R.id.map_fragment, mapTab)
+//                .commit();
 
     }
-
-
-
-
 }

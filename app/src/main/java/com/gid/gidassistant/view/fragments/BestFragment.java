@@ -12,11 +12,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.gid.gidassistant.R;
+import com.gid.gidassistant.presenter.BestFragmentPresenter;
 import com.gid.gidassistant.view.adapters.best.BestItemAdapter;
 import com.gid.gidassistant.view.adapters.best.SpacesItemDecoration;
+import com.gid.gidassistant.presenter.contracts.BestFragmentMainContract;
 
-public class BestFragment extends Fragment {
-
+public class BestFragment extends Fragment implements BestFragmentMainContract.View  {
 
 
     String mTitle[] = {"Facebook", "Whatsapp", "Twitter", "Instagram", "Youtube"};
@@ -27,8 +28,10 @@ public class BestFragment extends Fragment {
     private View view;
     private RecyclerView listItem;
     // private ProgressBar progressBar;
+    private BestFragmentMainContract.Presenter presenter;
 
     public BestFragment() {
+        presenter = new BestFragmentPresenter(this);
     }
 
 

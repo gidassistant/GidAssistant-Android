@@ -1,41 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center_horizontal"
-    android:background="@color/whiteColor"
     android:orientation="vertical"
-    >
-
+    android:gravity="center"
+    android:background="@color/toolbarBackground">
+<!--
     <TextView
+        android:gravity="center_horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/gid_assista"
+        android:text="Чтобы просматривать маршрут, нам необходимо знать ваше расположение"/>-->
+
+    <ImageView
+        android:layout_gravity="center_horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/gid_assista"
-        android:theme="@style/AppNameBig"
-        android:gravity="center"
-        android:layout_marginTop="70dp"
-        />
+        android:src="@drawable/ic_location_earth"/>
 
-
-
-    <TextView
-
-        android:id="@+id/lorem_ipsum2"
-        android:layout_width="350dp"
-        android:layout_height="125dp"
-        android:layout_marginTop="20dp"
-        android:textSize="14sp"
-        android:textColor="@color/blackColor"
-
-        android:layout_alignParentLeft="true"
-
-        android:layout_alignParentTop="true"
-
-        android:text="@string/lorem_ipsum"
-
-
-        />
-
-
+  <!--  <Button
+        android:layout_marginTop="30sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/active_outline_btn"
+        android:text="Give permissions"
+        android:theme="@style/gid_assista"
+        android:paddingStart="25sp"
+        android:paddingEnd="25sp"/>-->
 
 </LinearLayout>
