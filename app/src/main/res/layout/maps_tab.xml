@@ -11,7 +11,8 @@
 
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/interests_menu">
+        android:background="@drawable/interests_menu"
+        tools:context=".view.fragments.MapFragment">
 
         <fragment
             android:id="@+id/map"

@@ -73,13 +73,14 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, MapFrag
     }
 
 
-
     @Override
     public void onMapReady(GoogleMap googleMap) {
 
         mMap = googleMap;
+
         if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
-            ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+
             // TODO: Consider calling ActivityCompat#requestPermissions
             // here to request the missing permissions, and then overriding
             //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
@@ -88,7 +89,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, MapFrag
             // for ActivityCompat#requestPermissions for more details.
             return;
         }
-        if(isLocationEnable) {
+        if (isLocationEnable) {
             mMap.setMyLocationEnabled(true);
 
             mMap.setOnMyLocationChangeListener(new GoogleMap.OnMyLocationChangeListener() {

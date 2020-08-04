@@ -12,12 +12,17 @@
     android:padding="20dp"
     android:background="@drawable/interests_menu">
 
-    <View
-        android:layout_width="90sp"
+
+  <!--  <View
+        android:layout_width="150dp"
         android:layout_height="2dp"
         android:layout_marginBottom="5sp"
-        android:background="@color/blackColor"
-        android:layout_gravity="center_horizontal"/>
+        android:background="@color/primaryDark"
+        android:layout_gravity="center_horizontal"
+        />-->
+
+
+
 
     <TextView
         style="@style/DefaultText"
