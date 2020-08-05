@@ -1,7 +1,6 @@
 package com.gid.gidassistant.view.activities;
 
 import android.Manifest;
-import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Spannable;
@@ -20,8 +19,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SwitchCompat;
 
 import com.gid.gidassistant.R;
-import com.gid.gidassistant.config.App;
-import com.gid.gidassistant.model.entities.User;
 import com.gid.gidassistant.presenter.SplashScreenPresenter;
 import com.gid.gidassistant.presenter.contracts.SplashScreenMainContract;
 
@@ -38,8 +35,9 @@ public class SplashActivity extends AppCompatActivity implements SplashScreenMai
         super.onCreate(savedInstanceState);
         setContentView(R.layout.permissions_layout);
         presenter = new SplashScreenPresenter(this);
-        if(presenter.isFirstRun()){
-            startMainActivity();
+        if(!presenter.isFirstRun(this)){
+            Log.d(TAG, "onCreate: " + "not first run");
+            presenter.startMainActivity(this);
         }
     }
 
@@ -127,11 +125,6 @@ public class SplashActivity extends AppCompatActivity implements SplashScreenMai
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         presenter.onRequestPermissionsResult(requestCode, permissions, grantResults);
-    }
-
-    private void startMainActivity() {
-        App.getInstance().getDatabase().userDao().insert(new User());
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
+        presenter.startMainActivity(this);
     }
 }

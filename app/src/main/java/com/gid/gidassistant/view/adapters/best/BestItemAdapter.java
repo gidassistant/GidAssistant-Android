@@ -16,14 +16,14 @@ import com.gid.gidassistant.R;
 
 public class BestItemAdapter extends RecyclerView.Adapter<BestItemAdapter.BestViewHolder> {
 
-    String titles[];
-    String heading[];
-    String descriptions[];
-    int images[];
+    private String[] titles;
+    private String[] heading;
+    private String[] descriptions;
+    private int[] images;
 
-    Context context;
+    private Context context;
 
-    public BestItemAdapter(Context context, String titles[], String heading[] ,String descriptions[], int images[]) {
+    public BestItemAdapter(Context context, String[] titles, String[] heading ,String[] descriptions, int[] images) {
         this.context = context;
         this.titles = titles;
         this.descriptions = descriptions;
@@ -53,7 +53,7 @@ public class BestItemAdapter extends RecyclerView.Adapter<BestItemAdapter.BestVi
         return images.length;
     }
 
-    public class BestViewHolder extends  RecyclerView.ViewHolder {
+    class BestViewHolder extends RecyclerView.ViewHolder {
 
         TextView heading;
         TextView mainHeading;
@@ -86,55 +86,4 @@ public class BestItemAdapter extends RecyclerView.Adapter<BestItemAdapter.BestVi
             outRect.bottom = space;
         }
     }
-
-
-//    class BestItemViewHolder extends RecyclerView.ViewHolder {
-//
-//        TextView headDescrp;
-//        TextView descrp;
-//        TextView heading;
-//        Image img;
-//
-//        Context context;
-//
-//        public BestItemViewHolder(@NonNull View itemView) {
-//            super(itemView);
-//
-//
-//            headDescrp = itemView.findViewById(R.id.heading_main);
-//            descrp = itemView.findViewById(R.id.description);
-//            heading = itemView.findViewById(R.id.heading);
-//            img = itemView.findViewById(R.id.image_content);
-//        }
-//
-
-
-
-
-     /*   Context context;
-
-
-        BestItemAdapter(Context context, String titles[], String descriptions[], int images[]) {
-            super(context, R.layout.best_layout, R.id.fragment_container_view_tag, titles);
-        }
-
-        @NonNull
-        @Override
-        public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-            LayoutInflater layoutInflater = (LayoutInflater) context.getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            View row = layoutInflater.inflate(R.layout.best_item, parent, false);
-            ImageView images = row.findViewById(R.id.image);
-            TextView myTitle = row.findViewById(R.id.heading_main);
-            TextView myDescription = row.findViewById(R.id.description);
-
-            // now set our resources on views
-            images.setImageResource(this.images[position]);
-            myTitle.setText(titles[position]);
-            myDescription.setText(descriptions[position]);
-
-
-            return row;
-        }
-
-    }*/
 }

@@ -2,18 +2,33 @@ package com.gid.gidassistant.presenter;
 
 import android.Manifest;
 import android.app.Activity;
+import android.content.Context;
 import android.content.pm.PackageManager;
+import android.util.Log;
+import android.util.TypedValue;
 import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 
+import com.gid.gidassistant.R;
+import com.gid.gidassistant.model.entities.Interest;
+import com.gid.gidassistant.model.repository.interests.InterestsHttpProvider;
 import com.gid.gidassistant.presenter.contracts.MapFragmentMainContract;
 import com.gid.gidassistant.utils.Permissions;
+import com.google.android.material.chip.Chip;
+import com.google.android.material.chip.ChipDrawable;
+import com.google.android.material.chip.ChipGroup;
+
+import java.util.List;
+
 
 public class MapFragmentPresenter implements MapFragmentMainContract.Presenter {
 
+    private static final String TAG = "MapFragmentPresenter";
+
     private MapFragmentMainContract.View view;
+    private MapFragmentMainContract.Repository repository;
     private static final String[] mapPermissions = new String[]
             {
                     Manifest.permission.ACCESS_FINE_LOCATION,
@@ -23,6 +38,7 @@ public class MapFragmentPresenter implements MapFragmentMainContract.Presenter {
 
     public MapFragmentPresenter(MapFragmentMainContract.View view) {
         this.view = view;
+        this.repository = new InterestsHttpProvider(this);
     }
 
     @Override
@@ -58,6 +74,38 @@ public class MapFragmentPresenter implements MapFragmentMainContract.Presenter {
             );
         } else{
             view.mapAccepted(true);
+        }
+    }
+
+    @Override
+    public void loadInterestsList(Activity activity, ChipGroup chipGroup) {
+        List<Interest> interestList = repository.getAllInterests();
+        Log.d(TAG, "loadInterestsList: " + interestList.size());
+        if(interestList != null && interestList.size() != 0) {
+            for (int index = 0; index < interestList.size(); index++) {
+                final Interest tagName = interestList.get(index);
+                /*Chip chip = new Chip(activity);
+                ChipDrawable chipDrawable = ChipDrawable.createFromAttributes(activity,
+                        null,
+                        0,
+                        R.style.Widget_MaterialComponents_Chip_Choice);
+                chip.setChipDrawable(chipDrawable);*/
+                Chip chip =  (Chip)activity.getLayoutInflater().inflate(R.layout.single_chip_layout, chipGroup, false);
+                //Chip chip = new Chip(activity, null, R.attr.CustomChipChoice);
+                int paddingDp = 10;
+                chip.setPadding(paddingDp, paddingDp, paddingDp, paddingDp);
+                chip.setText(tagName.getName());
+                chip.setCheckable(true);
+                chip.setCheckedIconResource(R.drawable.ic_action_navigation_checked);
+                //chip.setCloseIconResource(R.drawable.ic_action_navigation_close);
+                //Added click listener on close icon to remove tag from ChipGroup
+                chip.setOnCloseIconClickListener(v -> {
+                    interestList.remove(tagName);
+                    chipGroup.removeView(chip);
+                });
+
+                chipGroup.addView(chip);
+            }
         }
     }
 }

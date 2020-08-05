@@ -12,9 +12,9 @@ public class UserRepository implements SplashScreenMainContract.Model {
     private static final String TAG = "UserRepository";
 
     @Override
-    public boolean isUserPresent(int id) {
+    public boolean isUserExists(int id) {
         User user = App.getInstance().getDatabase().userDao().getUser(id);
-        Log.d(TAG, "isUserPresent: " + user);
+        Log.d(TAG, "isUserExists: " + (user != null));
         return user != null;
     }
 

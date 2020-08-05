@@ -6,6 +6,7 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="CustomChipChoice">@style/CustomChipChoiceStyle</item>
     </style>
 
     <style name="gid_assista">
@@ -77,4 +78,51 @@
         <item name="fontFamily">@font/mon_light</item>
     </style>
 
+    <style name="SearchTextStyle">
+        <!-- Custom values write to here for SearchEditText. -->
+        <item name="android:focusable">true</item>
+        <item name="android:focusableInTouchMode">true</item>
+        <item name="android:enabled">true</item>
+        <item name="android:hint">Search</item>
+        <item name="android:imeOptions">actionSearch</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:maxLength">15</item>
+        <item name="android:inputType">textCapSentences</item>
+        <item name="android:textColorHint">#80999999</item>
+        <item name="android:textColor">#000</item>
+    </style>
+
+    <style name="CustomChipChoiceStyle" parent="@style/Widget.MaterialComponents.Chip.Action">
+        .
+        <item name="checkedIconVisible">false</item>
+        <item name="android:focusable">true</item>
+        <item name="android:clickable">true</item>
+        <item name="chipBackgroundColor">@color/colorWhite</item>
+        <item name="checkedIcon">@drawable/ic_action_navigation_checked</item>
+        <item name="chipIconVisible">true</item>
+        <item name="textStartPadding">0dp</item>
+        <item name="textEndPadding">0dp</item>
+        <item name="android:checkable">true</item>
+        .
+        .
+        <item name="android:textAppearance">@style/ChipTextStyleAppearance</item>
+    </style>
+
+    <style name="ChipTextStyleAppearance">
+        <item name="android:fontFamily">@font/mon_regular</item>
+        <item name="android:textSize">13dp</item>
+        <item name="android:textColor">@color/blackColor</item>
+    </style>
+
+    <style name="CustomChipChoice" parent="@style/Widget.MaterialComponents.Chip.Choice">
+        <item name="chipBackgroundColor">@color/background_color_chip_state_list</item>
+        <item name="chipStrokeColor">@color/background_color_chip_state_list</item>
+        <item name="rippleColor">@color/topic_social_pressed</item>
+        <item name="android:textColor">@color/text_chip_state_list</item>
+        <item name="android:fontFamily">@font/mon_regular</item>
+        <item name="android:textSize">13dp</item>
+    </style>
+
+
+    <color name="colorWhite">#FFFFFF</color>
 </resources>

@@ -2,24 +2,29 @@ package com.gid.gidassistant.presenter;
 
 import android.Manifest;
 import android.app.Activity;
-import android.content.pm.PackageManager;
-import android.util.ArraySet;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 
-import com.gid.gidassistant.config.App;
+
+import com.gid.gidassistant.R;
 import com.gid.gidassistant.model.entities.User;
 import com.gid.gidassistant.model.repository.user.UserRepository;
 import com.gid.gidassistant.presenter.contracts.SplashScreenMainContract;
 import com.gid.gidassistant.utils.Permissions;
+import com.gid.gidassistant.view.activities.MainActivity;
 
-import java.util.Arrays;
-import java.util.List;
 import java.util.Set;
+import java.util.Arrays;
 import java.util.TreeSet;
 
 public class SplashScreenPresenter implements SplashScreenMainContract.Presenter {
+
+    private static final String TAG = "SplashScreenPresenter";
 
     private SplashScreenMainContract.View view;
     private SplashScreenMainContract.Model model;
@@ -51,7 +56,7 @@ public class SplashScreenPresenter implements SplashScreenMainContract.Presenter
 
     @Override
     public void provideLocationPermissions(Activity activity) {
-        if (!Permissions.Checker.isForegroundLocationEnable(activity)) {
+        if (Permissions.Checker.isForegroundLocationEnable(activity)) {
             ActivityCompat.requestPermissions(
                     activity,
                     new String[]{
@@ -65,11 +70,16 @@ public class SplashScreenPresenter implements SplashScreenMainContract.Presenter
 
     public void provideSelectedPermission(Activity activity) {
         String[] permission = permissions.toArray(new String[0]);
-        ActivityCompat.requestPermissions(
-                activity,
-                permission,
-                PERMISSIONS_REQUEST_CODE
-        );
+        Log.d(TAG, "provideSelectedPermission: " + permission.length);
+        if(permission.length != 0) {
+            ActivityCompat.requestPermissions(
+                    activity,
+                    permission,
+                    PERMISSIONS_REQUEST_CODE
+            );
+        } else {
+            startMainActivity(activity);
+        }
     }
 
     @Override
@@ -86,11 +96,18 @@ public class SplashScreenPresenter implements SplashScreenMainContract.Presenter
     }
 
     @Override
-    public boolean isFirstRun() {
-        boolean isUserPresent = model.isUserPresent(0);
-        if(!isUserPresent)
-            model.addUser(new User());
-        return !isUserPresent;
+    public void startMainActivity(Context context) {
+        context.getSharedPreferences(context.getString(R.string.project_id), Context.MODE_PRIVATE).edit().putBoolean("firstRun", false).apply();
+        Intent intent = new Intent(context, MainActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        context.startActivity(intent);
+    }
+
+    @Override
+    public boolean isFirstRun(Activity activity) {
+        SharedPreferences sharedPreferences = activity.getSharedPreferences(activity.getString(R.string.project_id), Context.MODE_PRIVATE);
+        boolean firstRun = sharedPreferences.getBoolean("firstRun", true);
+        return firstRun;
     }
 
     @Override

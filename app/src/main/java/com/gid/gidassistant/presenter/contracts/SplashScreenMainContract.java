@@ -2,6 +2,7 @@ package com.gid.gidassistant.presenter.contracts;
 
 import android.Manifest;
 import android.app.Activity;
+import android.content.Context;
 import android.view.View;
 
 import androidx.core.app.ActivityCompat;
@@ -25,11 +26,12 @@ public interface SplashScreenMainContract {
         void provideSelectedPermission(Activity activity);
         void provideLocationPermissions(Activity activity);
         void provideStoragePermissions(Activity activity);
-        boolean isFirstRun();
+        void startMainActivity(Context context);
+        boolean isFirstRun(Activity activity);
     }
 
     interface Model {
-        boolean isUserPresent(int id);
+        boolean isUserExists(int id);
         void addUser(User user);
     }
 }
