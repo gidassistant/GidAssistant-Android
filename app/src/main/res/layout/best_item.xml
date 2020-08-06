@@ -7,7 +7,7 @@
     android:layout_height="250dp"
     android:orientation="horizontal"
     android:padding="16dp"
-    android:background="@color/whiteColor"
+    android:background="@color/secondaryColor"
     tools:context=".view.adapters.best.BestItemAdapter">
 
     <LinearLayout
@@ -40,7 +40,7 @@
             android:layout_marginTop="25dp"
             android:gravity="center"
             android:text="Popular place"
-            android:textColor="@color/blackColor"
+            android:textColor="@color/secondaryTextColor"
             android:theme="@style/HeadingText" />
 
     </LinearLayout>
@@ -59,7 +59,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Main history of Odesa"
-            android:textColor="@color/blackColor"
+            android:textColor="@color/secondaryTextColor"
             android:theme="@style/HeadingFatText" />
 
         <TextView
@@ -68,7 +68,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. "
-            android:textColor="@color/blackColor"
+            android:textColor="@color/secondaryTextColor"
             android:theme="@style/DescriptionText" />
 
 
@@ -80,10 +80,7 @@
         android:layout_height="25dp"
         android:layout_marginEnd="15dp"
         android:layout_marginBottom="0dp"
-        android:background="@drawable/active_outline_btn"
-        android:text="More"
-        android:textColor="@color/activeColor"
-        android:theme="@style/DescriptionText"
+        android:textColor="@color/primaryDarkColor"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
