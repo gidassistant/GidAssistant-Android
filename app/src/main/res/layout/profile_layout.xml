@@ -62,6 +62,18 @@
                 android:text="Storage"
                 android:theme="@style/SCBSwitch" />
 
+            <Button
+                android:id="@+id/next_step_f_perm"
+                android:layout_width="110dp"
+                android:layout_height="35dp"
+                android:layout_marginTop="150dp"
+                android:layout_marginLeft="90dp"
+                android:background="@drawable/active_outline_btn"
+                android:text="Next"
+                android:textColor="@color/activeColor"
+                android:theme="@style/DefaultText"
+                />
+
         </LinearLayout>
     </ScrollView>
 

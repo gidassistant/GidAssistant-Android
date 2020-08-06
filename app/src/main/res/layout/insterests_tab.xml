@@ -35,4 +35,9 @@
         android:textColor="@color/blackColor"
         android:textSize="22dp"/>
 
+  <SearchView
+      android:id="@+id/dasdaklsjd"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent" />
+
 </LinearLayout>

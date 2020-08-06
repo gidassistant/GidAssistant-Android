@@ -12,8 +12,7 @@
         <item name="android:textSize"> 18sp </item>
         <item name="android:textColor"> #2E2E2E</item>
     </style>
-    
-    
+
     <style name="DefaultText">
         <item name="android:textSize"> 18sp </item>
         <item name="android:textStyle"> normal </item>
@@ -28,7 +27,6 @@
         <item name="textAllCaps"> false </item>
         <item name="android:textColor"> #2E2E2E</item>
     </style>
-
 
     <style name="HeadingFatText">
         <item name="android:textSize"> 18sp </item>
@@ -70,7 +68,6 @@
         <item name="fontFamily"> @font/mon_regular </item>
         <item name="textAllCaps"> false </item>
         <item name="android:textColor"> #2E2E2E </item>
-
     </style>
 
     <style name="Widget.BottomNavigationView14" parent="@style/Widget.Design.BottomNavigationView">

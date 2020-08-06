@@ -31,8 +31,5 @@ public class MapFragmentPresenter implements MapFragmentMainContract.Presenter {
 
     }
 
-    @Override
-    public void requestPermissions(Activity activity, int requestCode, String[] permissions) {
 
-    }
 }
