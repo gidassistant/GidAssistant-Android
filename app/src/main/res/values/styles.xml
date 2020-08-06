@@ -1,17 +1,27 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:fontFamily">@font/mon_regular</item>
+        <item name="colorPrimary">@color/primaryColor</item>
+        <item name="colorPrimaryDark">@color/primaryDarkColor</item>
+        <item name="colorSecondary">@color/secondaryColor</item>
         <item name="CustomChipChoice">@style/CustomChipChoiceStyle</item>
+        <item name="materialThemeOverlay">@color/secondaryColor</item>
+    </style>
+
+    <style name="MainTheme" parent="Theme.MaterialComponents.Light">
+
     </style>
 
     <style name="gid_assista">
         <item name="android:textSize"> 18sp </item>
         <item name="android:textColor"> #2E2E2E</item>
+    </style>
+    
+    <style name="SplashTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="android:windowBackground">@color/primaryColor</item>
     </style>
     
     
@@ -111,16 +121,7 @@
     <style name="ChipTextStyleAppearance">
         <item name="android:fontFamily">@font/mon_regular</item>
         <item name="android:textSize">13dp</item>
-        <item name="android:textColor">@color/blackColor</item>
-    </style>
-
-    <style name="CustomChipChoice" parent="@style/Widget.MaterialComponents.Chip.Choice">
-        <item name="chipBackgroundColor">@color/background_color_chip_state_list</item>
-        <item name="chipStrokeColor">@color/background_color_chip_state_list</item>
-        <item name="rippleColor">@color/topic_social_pressed</item>
-        <item name="android:textColor">@color/text_chip_state_list</item>
-        <item name="android:fontFamily">@font/mon_regular</item>
-        <item name="android:textSize">13dp</item>
+        <item name="android:textColor">@color/primaryDarkColor</item>
     </style>
 
 

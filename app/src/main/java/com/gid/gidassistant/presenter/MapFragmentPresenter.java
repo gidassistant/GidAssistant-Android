@@ -7,6 +7,7 @@ import android.content.pm.PackageManager;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
@@ -84,14 +85,8 @@ public class MapFragmentPresenter implements MapFragmentMainContract.Presenter {
         if(interestList != null && interestList.size() != 0) {
             for (int index = 0; index < interestList.size(); index++) {
                 final Interest tagName = interestList.get(index);
-                /*Chip chip = new Chip(activity);
-                ChipDrawable chipDrawable = ChipDrawable.createFromAttributes(activity,
-                        null,
-                        0,
-                        R.style.Widget_MaterialComponents_Chip_Choice);
-                chip.setChipDrawable(chipDrawable);*/
-                Chip chip =  (Chip)activity.getLayoutInflater().inflate(R.layout.single_chip_layout, chipGroup, false);
-                //Chip chip = new Chip(activity, null, R.attr.CustomChipChoice);
+                Chip chip = new Chip(activity);
+                //Chip chip =  (Chip)activity.getLayoutInflater().inflate(R.layout.single_chip_layout, chipGroup, false);
                 int paddingDp = 10;
                 chip.setPadding(paddingDp, paddingDp, paddingDp, paddingDp);
                 chip.setText(tagName.getName());

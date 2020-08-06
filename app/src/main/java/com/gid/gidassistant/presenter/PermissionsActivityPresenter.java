@@ -22,7 +22,7 @@ import java.util.Set;
 import java.util.Arrays;
 import java.util.TreeSet;
 
-public class SplashScreenPresenter implements SplashScreenMainContract.Presenter {
+public class PermissionsActivityPresenter implements SplashScreenMainContract.Presenter {
 
     private static final String TAG = "SplashScreenPresenter";
 
@@ -35,7 +35,7 @@ public class SplashScreenPresenter implements SplashScreenMainContract.Presenter
             Manifest.permission.ACCESS_FINE_LOCATION,
             Manifest.permission.READ_EXTERNAL_STORAGE));
 
-    public SplashScreenPresenter(SplashScreenMainContract.View view) {
+    public PermissionsActivityPresenter(SplashScreenMainContract.View view) {
         this.view = view;
         this.model = new UserRepository();
     }
@@ -96,11 +96,12 @@ public class SplashScreenPresenter implements SplashScreenMainContract.Presenter
     }
 
     @Override
-    public void startMainActivity(Context context) {
-        context.getSharedPreferences(context.getString(R.string.project_id), Context.MODE_PRIVATE).edit().putBoolean("firstRun", false).apply();
-        Intent intent = new Intent(context, MainActivity.class);
+    public void startMainActivity(Activity activity) {
+        activity.getSharedPreferences(activity.getString(R.string.project_id), Context.MODE_PRIVATE).edit().putBoolean("firstRun", false).apply();
+        Intent intent = new Intent(activity, MainActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        context.startActivity(intent);
+        activity.startActivity(intent);
+        activity.finish();
     }
 
     @Override

@@ -26,7 +26,7 @@ public interface SplashScreenMainContract {
         void provideSelectedPermission(Activity activity);
         void provideLocationPermissions(Activity activity);
         void provideStoragePermissions(Activity activity);
-        void startMainActivity(Context context);
+        void startMainActivity(Activity context);
         boolean isFirstRun(Activity activity);
     }
 
