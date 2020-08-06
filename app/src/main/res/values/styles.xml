@@ -1,16 +1,27 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:fontFamily">@font/mon_regular</item>
+        <item name="colorPrimary">@color/primaryColor</item>
+        <item name="colorPrimaryDark">@color/primaryDarkColor</item>
+        <item name="colorSecondary">@color/secondaryColor</item>
+        <item name="CustomChipChoice">@style/CustomChipChoiceStyle</item>
+        <item name="materialThemeOverlay">@color/secondaryColor</item>
+    </style>
+
+    <style name="MainTheme" parent="Theme.MaterialComponents.Light">
+
     </style>
 
     <style name="gid_assista">
         <item name="android:textSize"> 18sp </item>
         <item name="android:textColor"> #2E2E2E</item>
+    </style>
+    
+    <style name="SplashTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="android:windowBackground">@color/primaryColor</item>
     </style>
     
     
@@ -77,4 +88,42 @@
         <item name="fontFamily">@font/mon_light</item>
     </style>
 
+    <style name="SearchTextStyle">
+        <!-- Custom values write to here for SearchEditText. -->
+        <item name="android:focusable">true</item>
+        <item name="android:focusableInTouchMode">true</item>
+        <item name="android:enabled">true</item>
+        <item name="android:hint">Search</item>
+        <item name="android:imeOptions">actionSearch</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:maxLength">15</item>
+        <item name="android:inputType">textCapSentences</item>
+        <item name="android:textColorHint">#80999999</item>
+        <item name="android:textColor">#000</item>
+    </style>
+
+    <style name="CustomChipChoiceStyle" parent="@style/Widget.MaterialComponents.Chip.Action">
+        .
+        <item name="checkedIconVisible">false</item>
+        <item name="android:focusable">true</item>
+        <item name="android:clickable">true</item>
+        <item name="chipBackgroundColor">@color/colorWhite</item>
+        <item name="checkedIcon">@drawable/ic_action_navigation_checked</item>
+        <item name="chipIconVisible">true</item>
+        <item name="textStartPadding">0dp</item>
+        <item name="textEndPadding">0dp</item>
+        <item name="android:checkable">true</item>
+        .
+        .
+        <item name="android:textAppearance">@style/ChipTextStyleAppearance</item>
+    </style>
+
+    <style name="ChipTextStyleAppearance">
+        <item name="android:fontFamily">@font/mon_regular</item>
+        <item name="android:textSize">13dp</item>
+        <item name="android:textColor">@color/primaryDarkColor</item>
+    </style>
+
+
+    <color name="colorWhite">#FFFFFF</color>
 </resources>

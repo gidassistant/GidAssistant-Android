@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.location.Location;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -24,13 +25,14 @@ import com.gid.gidassistant.utils.Permissions;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.GoogleMapOptions;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 
-public class MapFragment extends Fragment implements OnMapReadyCallback, MapFragmentMainContract.View, Permissions.PermissionsObserver {
+public class MapFragment extends Fragment implements OnMapReadyCallback, MapFragmentMainContract.View {
 
     private Context context;
     private View view;
@@ -39,6 +41,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, MapFrag
     private static final String TAG = "MapFragment";
     private View interestsButton;
     private LinearLayout linearLayout;
+    private SupportMapFragment mapFragment;
 
     private boolean isLocationEnable = false;
 
@@ -52,67 +55,48 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, MapFrag
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.maps_tab, container, false);
+        presenter.onCreate(getActivity());
         return view;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        //checkPermission();
-        interestsButton = this.view.findViewById(R.id.interestsButton);
-        linearLayout = this.view.findViewById(R.id.interest_bottom_sheet);
-        Log.d(TAG, "onViewCreated: " + linearLayout);
-        final BottomSheetBehavior bottomSheetBehavior = BottomSheetBehavior.from(linearLayout);
-        interestsButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
-            }
-        });
-        checkPermission();
+        setBottomSheet();
     }
 
+    private void setBottomSheet() {
+        interestsButton = this.view.findViewById(R.id.interestsButton);
+        linearLayout = this.view.findViewById(R.id.interest_bottom_sheet);
+        final BottomSheetBehavior bottomSheetBehavior = BottomSheetBehavior.from(linearLayout);
+        interestsButton.setOnClickListener(v -> bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED));
+        presenter.loadInterestsList(getActivity(), view.findViewById(R.id.interests_chipGroup));
+    }
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
-
         mMap = googleMap;
-
-        if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
-                ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-
-            // TODO: Consider calling ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
-            return;
-        }
+        mMap.setMyLocationEnabled(true);
+        mMap.setOnMyLocationChangeListener(this::animateCameraToMyLocation);
         if (isLocationEnable) {
-            mMap.setMyLocationEnabled(true);
-
-            mMap.setOnMyLocationChangeListener(new GoogleMap.OnMyLocationChangeListener() {
-                @Override
-                public void onMyLocationChange(Location location) {
-                    LatLng latlng = new LatLng(location.getLatitude(), location.getLongitude());
-                    MarkerOptions markerOptions = new MarkerOptions();
-                    markerOptions.position(latlng);
-
-                    markerOptions.title("My Marker");
-                    mMap.clear();
-                    CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(latlng, 15);
-                    mMap.animateCamera(cameraUpdate);
-                    mMap.addMarker(markerOptions);
-                }
-            });
+            LocationManager locationManager = (LocationManager) getContext().getSystemService(Context.LOCATION_SERVICE);
+            if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
+                    ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                return;
+            }
+            animateCameraToMyLocation(locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER));
         }
-
+        mMap.setOnMyLocationClickListener(this::animateCameraToMyLocation);
     }
 
-    private void checkPermission() {
-        Permissions.Provider provider = new Permissions.Provider(this);
-        provider.requestForegroundLocationPermission(getActivity());
+    private void animateCameraToMyLocation(Location location) {
+        if (isLocationEnable) {
+            mMap.setMyLocationEnabled(true);
+            LatLng latlng = new LatLng(location.getLatitude(), location.getLongitude());
+            mMap.clear();
+            CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(latlng, 17);
+            mMap.animateCamera(cameraUpdate);
+        }
     }
 
     @Override
@@ -122,15 +106,9 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, MapFrag
     }
 
     @Override
-    public void onRequestPermissionGranted(String[] permissions) {
-        SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
-        Log.d(TAG, "onRequestPermissionsResult: " + mapFragment);
+    public void mapAccepted(boolean value) {
+        isLocationEnable = value;
+        mapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-        isLocationEnable = true;
-    }
-
-    @Override
-    public void onRequestPermissionDenied(String[] permissions) {
-
     }
 }

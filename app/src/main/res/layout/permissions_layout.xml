@@ -1,32 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:background="@color/secondaryLightColor"
     android:orientation="vertical"
-    android:gravity="center"
-    android:background="@color/toolbarBackground">
-<!--
-    <TextView
-        android:gravity="center_horizontal"
+    android:theme="@style/AppTheme">
+
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/gid_assista"
-        android:text="Чтобы просматривать маршрут, нам необходимо знать ваше расположение"/>-->
+        android:layout_height="match_parent">
 
-    <ImageView
-        android:layout_gravity="center_horizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_location_earth"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingTop="25sp"
+            android:paddingBottom="25sp">
 
-  <!--  <Button
-        android:layout_marginTop="30sp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/active_outline_btn"
-        android:text="Give permissions"
-        android:theme="@style/gid_assista"
-        android:paddingStart="25sp"
-        android:paddingEnd="25sp"/>-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="70dp"
+                android:gravity="center"
+                android:text="@string/gid_assista"
+                android:theme="@style/AppNameBig" />
+
+            <TextView
+                android:id="@+id/lorem_ipsum"
+                android:layout_width="350dp"
+                android:layout_height="125dp"
+                android:layout_marginTop="20dp"
+                android:text="@string/lorem_ipsum"
+                android:textColor="@color/secondaryTextColor"
+                android:textSize="14sp"/>
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/switch1"
+                android:layout_width="325dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="65dp"
+                android:checked="true"
+                android:text="Location"
+                android:onClick="onLocationSwitched"
+                android:theme="@style/SCBSwitch" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/switch3"
+                android:layout_width="325dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:checked="true"
+                android:text="Storage"
+                android:onClick="onStorageSwitched"
+                android:theme="@style/SCBSwitch" />
+
+            <Button
+                android:id="@+id/next_step_f_perm"
+                android:layout_width="110dp"
+                android:layout_height="35dp"
+                android:layout_marginTop="150dp"
+                android:layout_marginLeft="90dp"
+                android:background="@drawable/avtive_fill_btn"
+                android:text="Next"
+                android:textColor="@color/primaryTextColor"
+                android:theme="@style/DefaultText"
+                android:onClick="onNextButtonClick"/>
+
+        </LinearLayout>
+    </ScrollView>
+
 
 </LinearLayout>
