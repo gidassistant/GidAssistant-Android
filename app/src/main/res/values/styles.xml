@@ -1,15 +1,19 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar.Bridge">
         <!-- Customize your theme here. -->
         <item name="android:fontFamily">@font/mon_regular</item>
         <item name="colorPrimary">@color/primaryColor</item>
-        <item name="colorPrimaryDark">@color/primaryDarkColor</item>
+        <item name="colorPrimaryDark">@color/secondaryDarkColor</item>
         <item name="colorSecondary">@color/secondaryColor</item>
-        <item name="CustomChipChoice">@style/CustomChipChoiceStyle</item>
+       <!-- <item name="CustomChipChoice">@style/CustomChipChoiceStyle</item>-->
         <item name="materialThemeOverlay">@color/secondaryColor</item>
+        <item name="CustomChipChoiceStyle">@style/ChipStyle</item>
+
     </style>
+
+
 
     <style name="MainTheme" parent="Theme.MaterialComponents.Light">
 
@@ -19,17 +23,28 @@
         <item name="android:textSize"> 18sp </item>
         <item name="android:textColor"> #2E2E2E</item>
     </style>
+
     
     <style name="SplashTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="android:windowBackground">@color/primaryColor</item>
     </style>
     
-    
+
     <style name="DefaultText">
         <item name="android:textSize"> 18sp </item>
         <item name="android:textStyle"> normal </item>
         <item name="fontFamily"> @font/mon_regular </item>
-        <item name="textAllCaps"> false </item>
+        <item name="android:textAllCaps"> false </item>
+    </style>
+
+    <style name="ButtonFill">
+        <item name="android:textSize"> 18sp </item>
+        <item name="android:textStyle"> normal </item>
+        <item name="fontFamily"> @font/mon_regular </item>
+        <item name="android:textAllCaps"> false </item>
+        <item name="android:background"> @drawable/avtive_fill_btn </item>
+        <item name="android:textColor"> @color/primaryTextColor </item>
+
     </style>
 
     <style name="AppNameBig">
@@ -39,7 +54,6 @@
         <item name="textAllCaps"> false </item>
         <item name="android:textColor"> #2E2E2E</item>
     </style>
-
 
     <style name="HeadingFatText">
         <item name="android:textSize"> 18sp </item>
@@ -81,7 +95,6 @@
         <item name="fontFamily"> @font/mon_regular </item>
         <item name="textAllCaps"> false </item>
         <item name="android:textColor"> #2E2E2E </item>
-
     </style>
 
     <style name="Widget.BottomNavigationView14" parent="@style/Widget.Design.BottomNavigationView">
@@ -102,26 +115,29 @@
         <item name="android:textColor">#000</item>
     </style>
 
+    <style name="ChipStyle" parent="Widget.MaterialComponents.Chip.Choice">
+        <item name="chipBackgroundColor">@color/colorWhite</item>
+        <item name="android:textAppearance">@color/secondaryDarkColor</item>
+        <item name="android:textColor">@color/activeColor</item>
+    </style>
+
     <style name="CustomChipChoiceStyle" parent="@style/Widget.MaterialComponents.Chip.Action">
         .
         <item name="checkedIconVisible">false</item>
         <item name="android:focusable">true</item>
         <item name="android:clickable">true</item>
-        <item name="chipBackgroundColor">@color/colorWhite</item>
-        <item name="checkedIcon">@drawable/ic_action_navigation_checked</item>
+        <item name="chipBackgroundColor">@color/activeColor</item>
+        <item name="android:textColor">#FFFFFF</item>
         <item name="chipIconVisible">true</item>
         <item name="textStartPadding">0dp</item>
         <item name="textEndPadding">0dp</item>
-        <item name="android:checkable">true</item>
-        .
-        .
         <item name="android:textAppearance">@style/ChipTextStyleAppearance</item>
     </style>
 
     <style name="ChipTextStyleAppearance">
         <item name="android:fontFamily">@font/mon_regular</item>
         <item name="android:textSize">13dp</item>
-        <item name="android:textColor">@color/primaryDarkColor</item>
+        <item name="android:textColor">@color/activeColor</item>
     </style>
 
 

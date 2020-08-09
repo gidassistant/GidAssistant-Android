@@ -3,9 +3,9 @@
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center_horizontal"
-    android:background="@color/secondaryLightColor"
+    android:background="@color/primaryWhite"
     android:orientation="vertical"
-    android:theme="@style/AppTheme"
+  
     >
 
 
@@ -68,8 +68,15 @@
                 android:layout_marginLeft="90dp"
                 android:background="@drawable/active_outline_btn"
                 android:text="Next"
-                android:textColor="@color/secondaryTextColor"
+                android:textColor="@color/activeColor"
                 android:onClick="onNextButtonClick"/>
+<!--<<<<<<< HEAD
+                android:textColor="@color/activeColor"
+                android:theme="@style/DefaultText"
+                />
+=======-->
+
+
 
         </LinearLayout>
     </ScrollView>
