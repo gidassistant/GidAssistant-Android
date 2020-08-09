@@ -2,12 +2,9 @@ package com.gid.gidassistant.presenter;
 
 import android.Manifest;
 import android.app.Activity;
-import android.content.Context;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.util.Log;
-import android.util.TypedValue;
-import android.view.View;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
@@ -18,7 +15,6 @@ import com.gid.gidassistant.model.repository.interests.InterestsHttpProvider;
 import com.gid.gidassistant.presenter.contracts.MapFragmentMainContract;
 import com.gid.gidassistant.utils.Permissions;
 import com.google.android.material.chip.Chip;
-import com.google.android.material.chip.ChipDrawable;
 import com.google.android.material.chip.ChipGroup;
 
 import java.util.List;
@@ -85,13 +81,19 @@ public class MapFragmentPresenter implements MapFragmentMainContract.Presenter {
         if(interestList != null && interestList.size() != 0) {
             for (int index = 0; index < interestList.size(); index++) {
                 final Interest tagName = interestList.get(index);
-                Chip chip = new Chip(activity);
+                Chip chip = new Chip(activity, null, R.style.ChipStyle);
                 //Chip chip =  (Chip)activity.getLayoutInflater().inflate(R.layout.single_chip_layout, chipGroup, false);
+
                 int paddingDp = 10;
                 chip.setPadding(paddingDp, paddingDp, paddingDp, paddingDp);
                 chip.setText(tagName.getName());
                 chip.setCheckable(true);
-                chip.setCheckedIconResource(R.drawable.ic_action_navigation_checked);
+
+
+                //chip.setChipBackgroundColorResources;
+
+                chip.setBackgroundColor(Color.parseColor("#4385F5"));
+                //chip.setCheckedIconResource(R.drawable.ic_action_navigation_checked);
                 //chip.setCloseIconResource(R.drawable.ic_action_navigation_close);
                 //Added click listener on close icon to remove tag from ChipGroup
                 chip.setOnCloseIconClickListener(v -> {

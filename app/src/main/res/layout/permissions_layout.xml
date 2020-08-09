@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center_horizontal"
-    android:background="@color/secondaryLightColor"
+    android:background="@color/primaryWhite"
     android:orientation="vertical"
     android:theme="@style/AppTheme">
 
@@ -63,10 +64,11 @@
                 android:layout_height="35dp"
                 android:layout_marginTop="150dp"
                 android:layout_marginLeft="90dp"
-                android:background="@drawable/avtive_fill_btn"
+                android:background="@drawable/active_outline_btn"
                 android:text="Next"
-                android:textColor="@color/primaryTextColor"
-                android:theme="@style/DefaultText"
+                android:textColor="@color/activeColor"
+                style="@style/DefaultText"
+
                 android:onClick="onNextButtonClick"/>
 
         </LinearLayout>

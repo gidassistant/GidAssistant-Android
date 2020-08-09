@@ -7,7 +7,7 @@
     android:layout_height="250dp"
     android:orientation="horizontal"
     android:padding="16dp"
-    android:background="@color/secondaryColor"
+    android:background="@color/primaryWhite"
     tools:context=".view.adapters.best.BestItemAdapter">
 
     <LinearLayout
@@ -80,7 +80,10 @@
         android:layout_height="25dp"
         android:layout_marginEnd="15dp"
         android:layout_marginBottom="0dp"
-        android:textColor="@color/primaryDarkColor"
+        android:text="More"
+        android:textColor="@color/activeColor"
+        android:background="@drawable/active_outline_btn"
+        android:theme="@style/DescriptionText"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"

@@ -17,6 +17,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:appCategory="maps">
+
         <meta-data android:name="com.google.andmroid.gms.version"
             android:value="@integer/google_play_services_version" />
 
@@ -25,7 +26,7 @@
             android:value="@string/google_maps_key" />
 
         <activity android:name=".view.activities.SplashActivity"
-            android:theme="@style/SplashTheme">
+           >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
