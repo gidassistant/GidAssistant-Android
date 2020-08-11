@@ -4,7 +4,9 @@ import android.Manifest;
 import android.app.Activity;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.os.Build;
 import android.util.Log;
+import android.widget.CompoundButton;
 
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
@@ -76,34 +78,9 @@ public class MapFragmentPresenter implements MapFragmentMainContract.Presenter {
 
     @Override
     public void loadInterestsList(Activity activity, ChipGroup chipGroup) {
-        List<Interest> interestList = repository.getAllInterests();
-        Log.d(TAG, "loadInterestsList: " + interestList.size());
-        if(interestList != null && interestList.size() != 0) {
-            for (int index = 0; index < interestList.size(); index++) {
-                final Interest tagName = interestList.get(index);
-                Chip chip = new Chip(activity, null, R.style.ChipStyle);
-                //Chip chip =  (Chip)activity.getLayoutInflater().inflate(R.layout.single_chip_layout, chipGroup, false);
 
-                int paddingDp = 10;
-                chip.setPadding(paddingDp, paddingDp, paddingDp, paddingDp);
-                chip.setText(tagName.getName());
-                chip.setCheckable(true);
+        Log.d(TAG, "loadInterestsList: ");
 
-
-                //chip.setChipBackgroundColorResources;
-
-                chip.setBackgroundColor(Color.parseColor("#4385F5"));
-                //chip.setCheckedIconResource(R.drawable.ic_action_navigation_checked);
-                //chip.setCloseIconResource(R.drawable.ic_action_navigation_close);
-                //Added click listener on close icon to remove tag from ChipGroup
-                chip.setOnCloseIconClickListener(v -> {
-                    interestList.remove(tagName);
-                    chipGroup.removeView(chip);
-                });
-
-                chipGroup.addView(chip);
-            }
-        }
     }
 
 }

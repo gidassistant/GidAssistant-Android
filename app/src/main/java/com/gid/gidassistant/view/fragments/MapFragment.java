@@ -58,15 +58,18 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, MapFrag
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        setBottomSheet();
+        setBottomSheet(view);
     }
 
-    private void setBottomSheet() {
-        interestsButton = this.view.findViewById(R.id.interestsButton);
-        linearLayout = this.view.findViewById(R.id.interest_bottom_sheet);
-        final BottomSheetBehavior bottomSheetBehavior = BottomSheetBehavior.from(linearLayout);
-        interestsButton.setOnClickListener(v -> bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED));
-        presenter.loadInterestsList(getActivity(), view.findViewById(R.id.interests_chipGroup));
+    private void setBottomSheet(View view) {
+        interestsButton = view.findViewById(R.id.interestsButton);
+        interestsButton.setOnClickListener(v -> {
+            BottomInterestsFragment fragment = BottomInterestsFragment.newInstance();
+            //linearLayout = view.findViewById(R.id.interest_bottom_sheet);
+            //final BottomSheetBehavior bottomSheetBehavior = BottomSheetBehavior.from(linearLayout);
+            //bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
+            fragment.show(getChildFragmentManager(), "InterestsBottomSheet");
+        });
     }
 
     @Override
@@ -88,10 +91,12 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, MapFrag
     private void animateCameraToMyLocation(Location location) {
         if (isLocationEnable) {
             mMap.setMyLocationEnabled(true);
-            LatLng latlng = new LatLng(location.getLatitude(), location.getLongitude());
-            mMap.clear();
-            CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(latlng, 17);
-            mMap.animateCamera(cameraUpdate);
+            if(location != null) {
+                LatLng latlng = new LatLng(location.getLatitude(), location.getLongitude());
+                mMap.clear();
+                CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(latlng, 17);
+                mMap.animateCamera(cameraUpdate);
+            }
         }
     }
 
