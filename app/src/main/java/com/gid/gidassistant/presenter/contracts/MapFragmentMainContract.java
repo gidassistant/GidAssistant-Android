@@ -31,6 +31,6 @@ public interface MapFragmentMainContract {
     }
 
     interface Repository {
-        List<Interest> getAllInterests();
+        List<Interest> getAllInterests(Context context);
     }
 }
